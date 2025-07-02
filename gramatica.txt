@@ -1,0 +1,64 @@
+<programa> ::= "programa" ID ";" [<declaracoes>] "inicio" <comandos> "fim" "."
+
+<declaracoes> ::= "var" <lista_declaraco> { "var" <lista_declaraco> }
+
+<lista_declaraco> ::= <lista_ids> ":" <tipo> ";"
+
+<tipo> ::= "inteiro" | "logico"
+
+<lista_ids> ::= ID { "," ID }
+
+<comandos> ::= <comando> { ";" <comando> }
+
+<comando> ::= <atribuicao> 
+            | <leitura> 
+            | <escrita> 
+            | <se> 
+            | <enquanto> 
+            | <bloco>
+            | <comentario>
+
+<atribuicao> ::= ID ":=" <expr>
+
+<leitura> ::= "ler" "(" <lista_ids> ")"
+
+<escrita> ::= "escrever" "(" (<STRING> | <expr>) { "," (<STRING> | <expr>) } ")"
+
+<se> ::= "se" <expr> "entao" <comando> [ "senao" <comando> ]
+
+<enquanto> ::= "enquanto" <expr> "faca" <comando>
+
+<bloco> ::= "inicio" <comandos> "fim"
+
+<comentario> ::= "/*" <texto_comentario> "*/"
+<texto_comentario> ::= { <qualquer_caractere_exceto_*/> }
+
+<lista_expr> ::= <expr> { "," <expr> }
+
+<expr> ::= <expr_logico>
+
+<expr_logico> ::= <expr_relacional> 
+                | <expr_relacional> ("||" | "&&") <expr_relacional>
+
+<expr_relacional> ::= <expr_arit> 
+                    [ ("=" | "<>" | "<" | "<=" | ">" | ">=") <expr_arit> ]
+
+<expr_arit> ::= <termo> { ("+" | "-" | "%") <termo> }
+
+<termo> ::= <fator> { ("*" | "/") <fator> }
+
+<fator> ::= "(" <expr> ")" 
+          | ID 
+          | NUMERO 
+          | "verdadeiro" 
+          | "falso" 
+          | STRING
+
+STRING ::= '"' <caracteres> '"'
+<caracteres> ::= { <qualquer_caractere_exceto_"> | "\n" | "\t" | "\\\"" }
+
+NUMERO ::= <digito>+
+<digito> ::= "0" | "1" | ... | "9"
+
+ID ::= <letra> (<letra> | <digito> | "_")*
+<letra> ::= [a-z | A-Z]
