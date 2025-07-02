@@ -1,0 +1,35 @@
+/* Programa para verificar se um número é primo */
+programa verificar_primo;
+var numero, divisor, resto, eh_primo : inteiro;
+inicio
+    escrever("VERIFICADOR DE NÚMEROS PRIMOS");
+    escrever("Digite um número para verificar se é primo: ");
+    ler(numero);
+    
+    se numero <= 1 entao
+        escrever(numero, " não é primo")
+    senao
+    inicio
+        eh_primo := 1; /* Assume que é primo inicialmente */
+        divisor := 2;
+        
+        /* Verificar divisibilidade até a raiz quadrada (aproximada) */
+        enquanto divisor * divisor <= numero faca
+        inicio
+            resto := numero - (numero / divisor) * divisor;
+            
+            se resto = 0 entao
+            inicio
+                eh_primo := 0;
+                escrever(numero, " é divisível por ", divisor)
+            fim;
+            
+            divisor := divisor + 1
+        fim;
+        
+        se eh_primo = 1 entao
+            escrever(numero, " é um número primo!")
+        senao
+            escrever(numero, " não é primo")
+    fim
+fim.

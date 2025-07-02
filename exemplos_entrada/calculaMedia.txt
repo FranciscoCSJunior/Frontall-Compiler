@@ -1,0 +1,50 @@
+/* Programa para calcular média de notas */
+programa media_notas;
+var quantidade, contador, nota, soma, media : inteiro;
+inicio
+    escrever("CALCULADORA DE MÉDIA ===");
+    escrever("Quantas notas voce quer inserir? ");
+    ler(quantidade);
+    
+    se quantidade <= 0 entao
+        escrever("Quantidade deve ser positiva!")
+    senao
+    inicio
+        soma := 0;
+        contador := 1;
+        
+        enquanto contador <= quantidade faca
+        inicio
+            escrever("Digite a nota ", contador, ": ");
+            ler(nota);
+            
+            se nota < 0 entao
+                escrever("Nota invalida! Considerando como 0")
+            senao
+                se nota > 10 entao
+                    escrever("Nota muito alta! Considerando como 100");
+            
+            /* Validar nota */
+            se nota < 0 entao
+                nota := 0;
+            
+            se nota > 10 entao
+                nota := 10;
+            
+            soma := soma + nota;
+            escrever("Nota registrada: ", nota);
+            contador := contador + 1
+        fim;
+        
+        media := soma / quantidade;
+        
+        escrever("Soma das notas: ", soma);
+        escrever("Quantidade de notas: ", quantidade);
+        escrever("Média final: ", media);
+        
+        se media >= 7 entao
+            escrever("Aprovado!")
+        senao
+                escrever("Reprovado")
+    fim
+fim.

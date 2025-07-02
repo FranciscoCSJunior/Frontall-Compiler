@@ -1,0 +1,53 @@
+/* Programa para ordenar 3 números em ordem crescente */
+programa ordenar_numeros;
+var a, b, c, temp : inteiro;
+inicio
+    escrever(" ORDENAÇÃO DE 3 NÚMEROS ");
+    escrever("Digite o primeiro número: ");
+    ler(a);
+    escrever("Digite o segundo número: ");
+    ler(b);
+    escrever("Digite o terceiro número: ");
+    ler(c);
+    
+    escrever("Números originais: ", a, ", ", b, ", ", c);
+    
+    /* Ordenação usando bubble sort simples */
+    /* Comparar a e b */
+    se a > b entao
+    inicio
+        temp := a;
+        a := b;
+        b := temp
+    fim;
+    
+    /* Comparar b e c */
+    se b > c entao
+    inicio
+        temp := b;
+        b := c;
+        c := temp
+    fim;
+    
+    /* Comparar a e b novamente */
+    se a > b entao
+    inicio
+        temp := a;
+        a := b;
+        b := temp
+    fim;
+    
+    escrever("Números ordenados: ", a, ", ", b, ", ", c);
+    
+    /* Verificar se são iguais */
+    se a = b entao
+        se b = c entao
+            escrever("Todos os números são iguais!")
+        senao
+            escrever("Dois números são iguais")
+    senao
+        se b = c entao
+            escrever("Dois números são iguais")
+        senao
+            escrever("Todos os números são diferentes")
+fim.

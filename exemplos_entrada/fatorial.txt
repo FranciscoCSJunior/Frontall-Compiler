@@ -1,0 +1,25 @@
+/* Programa para calcular o fatorial de um número */
+programa fatorial;
+var numero, resultado, i : inteiro;
+inicio
+    escrever("CÁLCULO DE FATORIAL");
+    escrever("Digite um número para calcular o fatorial: ");
+    ler(numero);
+    
+    se numero < 0 entao
+        escrever("Fatorial não é definido para números negativos!")
+    senao
+    inicio
+        resultado := 1;
+        i := 1;
+        
+        enquanto i <= numero faca
+        inicio
+            resultado := resultado * i;
+            escrever(i, "! parcial = ", resultado);
+            i := i + 1
+        fim;
+        
+        escrever("O fatorial de ", numero, " é: ", resultado)
+    fim
+fim.

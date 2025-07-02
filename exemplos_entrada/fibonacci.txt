@@ -1,0 +1,41 @@
+/* Programa para calcular a sequência de Fibonacci */
+programa fibonacci;
+var n, a, b, temp, contador : inteiro;
+inicio
+    escrever("SEQUÊNCIA DE FIBONACCI");
+    escrever("Digite quantos termos deseja calcular: ");
+    ler(n);
+    
+    /* Verificar se n é válido */
+    se n <= 0 entao
+        escrever("Número deve ser positivo!")
+    senao
+    inicio
+        a := 0;
+        b := 1;
+        contador := 1;
+        
+        escrever("Sequência de Fibonacci:");
+        
+        se n >= 1 entao
+            escrever("Termo ", contador, ": ", a);
+        
+        se n >= 2 entao
+        inicio
+            contador := contador + 1;
+            escrever("Termo ", contador, ": ", b)
+        fim;
+        
+        /* Calcular e mostrar os demais termos */
+        enquanto contador < n faca
+        inicio
+            temp := a + b;
+            a := b;
+            b := temp;
+            contador := contador + 1;
+            escrever("Termo ", contador, ": ", b)
+        fim;
+        
+        escrever("Cálculo finalizado!")
+    fim
+fim.
