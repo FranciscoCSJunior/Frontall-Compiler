@@ -55,53 +55,41 @@ python src/main.py exemplos_entrada/fatorial.txt -ast
 ## Todas as opções juntas
 python src/main.py exemplos_entrada/fatorial.txt -e -v --ast
 
-### 3. Estrutura do código
-lexer.py
-**Análise Léxica**
-Reconhece mais de 20 tipos de tokens
+## Estrutura do Código
 
-Trata strings com sequências de escape (\n, \t)
+### `lexer.py` - **Análise Léxica**
+- Reconhece mais de 20 tipos de tokens
+- Trata strings com sequências de escape (`\n`, `\t`)
+- Localização precisa de erros (linha/coluna)
 
-Localização precisa de erros (linha/coluna)
+### `parser.py` - **Análise Sintática**
+- Implementa parsing preditivo LL(1)
+- Constrói AST tipada
+- Recuperação de erros no modo pânico
 
-parser.py
-**Análise Sintática**
-Parsing preditivo LL(1)
+### `ast_nodes.py`
+- Define a estrutura da Árvore Sintática Abstrata (AST)
 
-Construção de AST tipada
-ast_nodes.py
+### `semantic.py` - **Análise Semântica**
+- Verificação estática de tipos
+- Detecção de variáveis não declaradas
+- Validação de estruturas de controle
 
-Recuperação de erros no modo pânico
+### `interpreter.py` - **Interpretador**
+- Ambiente de execução com variáveis globais
+- Suporte a:
+  - Atribuições
+  - Entrada/saída interativa
+  - Loops (`enquanto`)
+  - Condicionais (`se`)
 
-semantic.py
-**Análise Semântica**
-Verificação estática de tipos
-
-Detecção de variáveis não declaradas
-
-Validação de estruturas de controle
-
-interpreter.py
-**Interpretador**
-Ambiente de execução com variáveis globais
-
-Suporte a:
-
-Atribuições
-
-Entrada/saída interativa
-
-Loops e condicionais
-
-main.py 
-Função principal: Coordena todo o processo de compilação/execução.
-
-Argumentos CLI:
-
-Parsing de opções (-e, -v, --ast)
-
-Leitura do arquivo fortall
-
+### `main.py` - **Ponto de Entrada**
+- Coordena todo o processo de compilação/execução
+- Tratamento de argumentos CLI:
+  - `-e`: Execução após compilação
+  - `-v`: Modo verboso
+  - `--ast`: Exibição da árvore sintática
+- Leitura e processamento de arquivos 
 ## Exemplo de Script
 
 Arquivo de entrada (`fatorial.txt`):
